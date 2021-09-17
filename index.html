@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eye Detector</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.js"></script>
+    <script src="https://unpkg.com/ml5@0.4.3/dist/ml5.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Cinzel+Decorative&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link href="//cdn.syncfusion.com/ej2/ej2-base/styles/material.css" rel="stylesheet" />
+
+    <link href="//cdn.syncfusion.com/ej2/ej2-buttons/styles/material.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar-inverse my_nav_bar">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#my_Navbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="#" class="navbar-brand">Sharvil's Eye Testing Center</a>
+        </div>
+
+        <div class="navbar-collapse collapse" id="my_Navbar">
+            <ul class="nav navbar-nav">
+                <li><a href="#instructions">Instructions</a></li>
+                <li><a href="#chart">Test Data & Results</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <marquee width="100%" height="25px" direction="right" id="tag">***Welcome all to Sharvil's eye test center. This website is only made for kids. Hope you have a great time!***</marquee>
+
+    <iframe width="955" height="537" src="https://www.youtube.com/embed/mMYu6UwFptY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+    <section id="instructions">
+
+        <div class="container">
+            <div class="page-header" id="header_travel">
+                <h1 class="titles text-capitalize"><kbd>instructions</kbd></h1>
+                <hr class="hrs">
+            </div>
+            <div class="campus_MainDiv ">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    <img class="img-responsive images" id="office" src="eye_test.jpg">
+                    <h4 class="text-capitalize steps"><b>Step 1:</b></h4>
+                    <p class="text-left text">Take a book and keep it aside. Keep the screen (preferrably computer) at an arms length distance and cover one of your eye with your hand.</p>
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    <img class="img-responsive images" id="ground" src="Screenshot_image.png">
+                    <h4 class="text-capitalize steps"><b>Step 2:</b></h4>
+                    <p class="text-left text">Read all the letters and write them in your book per row. Click on the small replica image of the eyechart you used below.</p>
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    <img class="img-responsive images" id="Grade5" src="Screenshot_2.png">
+                    <h4 class="text-capitalize steps"><b>Step 3:</b></h4>
+                    <p class="text-left text">Once you've clicked on your respective eyechart, put the letters you wrote in your book per row in the text boxes and then click on submit. You'll receive your results via a small pop-up box.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <section id="chart">
+
+        <div class="page-header">
+            <h1 class="titles"><kbd>Eye Test Data & Results</kbd></h1>
+            <hr class="hrs">
+            <form action="/action_page.php">
+            <h3 id="age_text">Please Choose your Age below</h3>
+            <br>
+            <div id="age" class="">
+            <label for="below_three">Children below 3 years old</label>
+            <input type="radio" id="below_three" name="fav_language" onclick="r1()" required>
+            <label for="from_three_to_four">Children aged from 3 - 4 years old</label>
+            <input type="radio" id="from_three_to_four" name="fav_language" onclick="r2()" required>
+            <label for="five_and_over">Kids aged 5 years and older</label>
+            <input type="radio" id="five_and_over" name="fav_language" onclick="r3()" required>
+            </div>
+            </form>
+            <br><br>
+            <div class="container">
+                <section id="intro">
+                    <div id="myCarousel" class="carousel slide">
+                        <div class="carousel-inner">
+                            <div class="item active">
+                                <center>
+                                    <a><img src="vision_chart.jpg" class="img-responsive"></a>
+                                    <div class="carousel-content">
+                                        <p>Vision Chart 1</p>
+                                    </div>
+                                </center>
+                            </div>
+                            <div class="item">
+                                <center>
+                                    <a><img src="eyechart_2.gif" class="img-responsive"></a>
+                                    <div class="carousel-content">
+                                        <p>Vision Chart 2</p>
+                                    </div>
+                                </center>
+                            </div>
+                            <div class="item">
+                                <center>
+                                    <a><img src="eyechart_3.png" class="img-responsive"></a>
+                                    <div class="carousel-content">
+                                        <p>Vision Chart 3</p>
+                                    </div>
+                                </center>
+                            </div>
+                        </div>
+        
+                        <!--Left and right movement-->
+        
+                        <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+                        <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+                    </div>
+        
+                </section>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 books" data-toggle="modal" data-target="#chart1">
+                    <img src="vision_chart.jpg" class="img-responsive hobbies ">
+                </div>
+                <div class="modal fade" id="chart1">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button id="vision_test" type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Vision Chart 1</h4>
+                            </div>
+                            <div class="modal-body">
+                                <img class="img-responsive charts" src="vision_chart.jpg">
+                                <b class="text_1">All letters are to be written with no spaces between them and in caps!</b><br>
+                                <input id="chart1_1" placeholder="Letters of 1st row here"></input>
+                                <input id="chart1_2" placeholder="Letters of 2nd row here"></input>
+                                <input id="chart1_3" placeholder="Letters of 3rd row here"></input>
+                                <input id="chart1_4" placeholder="Letters of 4th row here"></input>
+                                <input id="chart1_5" placeholder="Letters of 5th row here"></input>
+                                <input id="chart1_6" placeholder="Letters of 6th row here"></input>
+                                <input id="chart1_7" placeholder="Letters of 7th row here"></input>
+                                <input id="chart1_8" placeholder="Letters of 8th row here"></input>
+                                <!--<input id="chart1_9" placeholder="Letters of 9th row here"></input>
+                                <input id="chart1_10" placeholder="Letters of 10th row here"></input>
+                                <input id="chart1_11" placeholder="Letters of 11th row here"></input>-->
+                                <br>
+                                <button type="submit" onclick="submit1()" class="btn btn-success">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              <!--<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 books" data-toggle="modal" data-target="#chart2">
+                    <img src="eyechart_2.gif" class="img-responsive hobbies" id="two">
+                </div>
+                <div class="modal fade" id="chart2">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Vision Chart 2</h4>
+                            </div>
+                            <div class="modal-body">
+                                <img class="img-responsive charts"  src="eyechart_2.gif">
+                                <b class="text_1">All letters are to be written with no spaces between them and in caps!</b><br>
+                                <input id="chart2_1" placeholder="Letters of 1st row here"></input>
+                                <input id="chart2_2" placeholder="Letters of 2nd row here"></input>
+                                <input id="chart2_3" placeholder="Letters of 3rd row here"></input>
+                                <input id="chart2_4" placeholder="Letters of 4th row here"></input>
+                                <input id="chart2_5" placeholder="Letters of 5th row here"></input>
+                                <input id="chart2_6" placeholder="Letters of 6th row here"></input>
+                                <input id="chart2_7" placeholder="Letters of 7th row here"></input>
+                                <input id="chart2_8" placeholder="Letters of 8th row here"></input>
+                                <br>
+                                <button type="submit" onclick="submit2()" class="btn btn-success">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 books" data-toggle="modal" data-target="#chart3">
+                    <img src="eyechart_3.png" class="img-responsive hobbies" id="three">
+                </div>
+                 <div class="modal fade" id="chart3">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Vision Chart 3</h4>
+                            </div>
+                            <div class="modal-body">
+                                <img class="img-responsive charts" src="eyechart_3.png">
+                                <br><br>
+                               <b class="text_1">All letters are to be written with no spaces between them and in caps!</b><br><br>
+                                <input id="chart3_1" placeholder="Letters of 1st row here"></input>
+                                <input id="chart3_2" placeholder="Letters of 2nd row here"></input>
+                                <input id="chart3_3" placeholder="Letters of 3rd row here"></input>
+                                <input id="chart3_4" placeholder="Letters of 4th row here"></input>
+                                <input id="chart3_5" placeholder="Letters of 5th row here"></input>
+                                <input id="chart3_6" placeholder="Letters of 6th row here"></input>
+                                <input id="chart3_7" placeholder="Letters of 7th row here"></input>
+                                <input id="chart3_8" placeholder="Letters of 8th row here"></input>
+                                <input id="chart3_9" placeholder="Letters of 9th row here"></input>
+                                <br>
+                                <button type="submit" onclick="submit3()" class="btn btn-success">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>-->
+        
+        
+        
+    
+    
+    
+    
+
+    </section>
+
+    
+
+    <section id="contact">
+
+        <div class="page-header">
+            <h1 class="titles text-capitalize"><kbd>Contact Us</kbd></h1>
+            <hr class="hrs">
+        </div>
+
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3312.4612496048917!2d151.19216631527763!3d-33.877772826956075!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12af4111a0a795%3A0xcc1e73de9f367b52!2sFort%20Street%20Public%20School%20in%20Wentworth%20Park!5e0!3m2!1sen!2sau!4v1631786474753!5m2!1sen!2sau" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+
+        <br>
+
+        <div class="contact_1">
+            <a href="mailto:pande.sharvil@gmail.com?Subject=Hi">
+                <h4><i class="fa fa-envelope"></i>&nbsp;&nbsp;pande.sharvil@gmail.com</h4>
+            </a>
+            <a href="tel:02 9247 2963" class="sf-icon-telephone e-btn e-link">
+                <h4><i class="fa fa-phone"></i>&nbsp;&nbsp;02 9247 2963</h4>
+            </a>
+        </div>
+
+        <div class="contat_2">
+            <form>
+                <span>Name: </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="input_name" required>
+                <br>
+                <br>
+                <span>Comment: </span><input type="text" name="input_comment" required>
+                <br>
+                <br>
+                <input type="submit" value="Submit" class="btn btn-success">
+            </form>
+        </div>
+
+    </section>
+</body>
+<script src="main.js"></script>
+</html>
+
+
+
